@@ -33,6 +33,7 @@ class User{
     var screenName : String!
     var url : String!
     var profileImage : URL!
+    var profileBackgroundImage : URL!
     
     
     /**
@@ -53,10 +54,12 @@ class User{
         lang = json["lang"].stringValue
         name = json["name"].stringValue
         profileBackgroundColor = json["profile_background_color"].stringValue
-        profileBackgroundImageUrl = json["profile_background_image_url"].stringValue
         profileBackgroundImageUrlHttps = json["profile_background_image_url_https"].stringValue
         profileBackgroundTile = json["profile_background_tile"].boolValue
         profileBannerUrl = json["profile_banner_url"].stringValue
+        
+        profileBackgroundImageUrl = json["profile_background_image_url"].stringValue
+        profileBackgroundImage = URL(string: profileBackgroundImageUrl)
         
         profileImageUrl = json["profile_image_url"].stringValue
         profileImage = URL(string: profileImageUrl)

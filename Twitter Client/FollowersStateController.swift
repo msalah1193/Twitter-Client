@@ -17,43 +17,66 @@ class FollowersStateController{
     var users: [User] = []
     
     //MARK:- Init
-    init() {
-        // Get the current userID. This value should be managed by the developer but can be retrieved from the TWTRSessionStore.
-        if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
-            self.client = TWTRAPIClient(userID: userID)
-        }
+    init(client: TWTRAPIClient) {
+        self.client = client
     }
     
-    //MARK: - Filtring
+    //MARK: - Cache Followers
+    func cacheFollowersResponse (_ data: Data)-> Bool {
+        
+        return UserDefaultsManager.save(data,
+                                        forKey: AppKeys.followersData.rawValue)
+    }
+    
+    func getCachedFollowersResponse ()-> Data? {
+        return UserDefaultsManager.getData(forKey: AppKeys.followersData.rawValue)
+    }
+    
+    //MARK:- PARSING
+    func setDataValues (_ data: Data) {
+        let json = JSON(data: data)
+        
+        let usersArray = json["users"].arrayValue
+        for usersJson in usersArray{
+            let value = User(fromJson: usersJson)
+            self.users.append(value)
+        }
+        
+        self.cursor = json["next_cursor"].stringValue
+    }
     
     
     //MARK:- API CALLS
     func getFollowersList(completion: @escaping (_ error: String?)->()) {
-        let statusesShowEndpoint = "https://api.twitter.com/1.1/followers/list.json"
+        let followersGetEndpoint = "https://api.twitter.com/1.1/followers/list.json"
         var clientError : NSError?
         
         let request = client.urlRequest(withMethod: "GET",
-                                        url: statusesShowEndpoint,
+                                        url: followersGetEndpoint,
                                         parameters: nil,
                                         error: &clientError)
         
         client.sendTwitterRequest(request) { (response, dataFromNetworking, connectionError) -> Void in
             if connectionError != nil {
-                completion(connectionError?.localizedDescription)
+                //get Cached Data 
+                guard let cachedData = self.getCachedFollowersResponse() else {
+                    completion(connectionError?.localizedDescription)
+                    return
+                }
+                
+                self.setDataValues(cachedData)
+                completion(nil)
                 return
             }
             
-            let json = JSON(data: dataFromNetworking!)
             
-            let usersArray = json["users"].arrayValue
-            for usersJson in usersArray{
-                let value = User(fromJson: usersJson)
-                self.users.append(value)
+            var errorMessage: String!
+            if !self.cacheFollowersResponse(dataFromNetworking!) {
+                errorMessage = "Error in Data Caching"
             }
             
-            self.cursor = json["next_cursor"].stringValue
-            
-            completion(nil)
+            self.setDataValues(dataFromNetworking!)
+            completion(errorMessage)
         }
     }
 }

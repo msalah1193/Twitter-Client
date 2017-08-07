@@ -15,5 +15,6 @@ class FollowerTVC: UITableViewCell {
     @IBOutlet weak var labelUsername: UILabel!
     @IBOutlet weak var labelBio: UILabel!
     
-    
+    //MARK:- IDENTIFIER
+    public static let CELL_ID = "FollowerCell"
 }

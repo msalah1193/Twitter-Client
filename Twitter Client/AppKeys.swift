@@ -15,6 +15,8 @@ enum AppKeys: String {
     
     case twitterConsumerSecret = "OpJ3f6BEW7qOE6eGjJEMkqfI5lUjs9D6ocnfTbPXrLJRCik3DF"
     
-    //MARK:- User Defaults Keys
+    //MARK:- User Defaults & Cache Keys
     case username = "username"
+    case followersData = "followersData"
+    
 }
