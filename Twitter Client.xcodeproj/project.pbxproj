@@ -33,6 +33,9 @@
 		C574C5961F3635D70033B2B0 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574C5951F3635D70033B2B0 /* TableDataSource.swift */; };
 		C574C5981F3636730033B2B0 /* FollowerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574C5971F3636730033B2B0 /* FollowerTVC.swift */; };
 		C574C59B1F3639250033B2B0 /* FollowersTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574C59A1F3639250033B2B0 /* FollowersTableDelegate.swift */; };
+		C5B534431F39DEE1006BF3C3 /* StickyHeaderCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B534421F39DEE1006BF3C3 /* StickyHeaderCellDelegate.swift */; };
+		C5B5344A1F39F0FD006BF3C3 /* ALLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B534491F39F0FD006BF3C3 /* ALLoadingView.swift */; };
+		C5B5344C1F39F277006BF3C3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5344B1F39F277006BF3C3 /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		C574C5951F3635D70033B2B0 /* TableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		C574C5971F3636730033B2B0 /* FollowerTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerTVC.swift; sourceTree = "<group>"; };
 		C574C59A1F3639250033B2B0 /* FollowersTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersTableDelegate.swift; sourceTree = "<group>"; };
+		C5B534421F39DEE1006BF3C3 /* StickyHeaderCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickyHeaderCellDelegate.swift; sourceTree = "<group>"; };
+		C5B534491F39F0FD006BF3C3 /* ALLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALLoadingView.swift; sourceTree = "<group>"; };
+		C5B5344B1F39F277006BF3C3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				C53C33241F38884400626B13 /* ListViewsDelegate.swift */,
+				C5B534421F39DEE1006BF3C3 /* StickyHeaderCellDelegate.swift */,
 			);
 			name = "Custom Protocols";
 			sourceTree = "<group>";
@@ -163,6 +170,7 @@
 		C574C5751F35DC4A0033B2B0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C5B534481F39F0EA006BF3C3 /* ALLoadingView */,
 				C59845371F373380002660FD /* UI Lists Data Source */,
 				C574C5891F3606E80033B2B0 /* Social Managers */,
 				C574C5861F3603310033B2B0 /* User Defaults */,
@@ -283,6 +291,15 @@
 				C53C33261F388ADB00626B13 /* CollectionDataSource.swift */,
 			);
 			name = "UI Lists Data Source";
+			sourceTree = "<group>";
+		};
+		C5B534481F39F0EA006BF3C3 /* ALLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				C5B534491F39F0FD006BF3C3 /* ALLoadingView.swift */,
+				C5B5344B1F39F277006BF3C3 /* ActivityIndicator.swift */,
+			);
+			name = ALLoadingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,6 +428,7 @@
 			files = (
 				C574C59B1F3639250033B2B0 /* FollowersTableDelegate.swift in Sources */,
 				C574C57B1F35E9C90033B2B0 /* AppKeys.swift in Sources */,
+				C5B534431F39DEE1006BF3C3 /* StickyHeaderCellDelegate.swift in Sources */,
 				C574C5931F362A560033B2B0 /* User.swift in Sources */,
 				C53C33301F38A54D00626B13 /* Tweet.swift in Sources */,
 				C574C5661F35DC3E0033B2B0 /* LoginViewController.swift in Sources */,
@@ -420,8 +438,10 @@
 				C53C332E1F389FC700626B13 /* ProfileStateController.swift in Sources */,
 				C574C5641F35DC3E0033B2B0 /* AppDelegate.swift in Sources */,
 				C574C58D1F3611270033B2B0 /* FollowersViewController.swift in Sources */,
+				C5B5344C1F39F277006BF3C3 /* ActivityIndicator.swift in Sources */,
 				C574C5901F3622A10033B2B0 /* FollowersStateController.swift in Sources */,
 				C574C5981F3636730033B2B0 /* FollowerTVC.swift in Sources */,
+				C5B5344A1F39F0FD006BF3C3 /* ALLoadingView.swift in Sources */,
 				C574C58B1F3607080033B2B0 /* AccountsManager.swift in Sources */,
 				C53C33271F388ADB00626B13 /* CollectionDataSource.swift in Sources */,
 				C574C5821F35F0270033B2B0 /* SweetAlert.swift in Sources */,

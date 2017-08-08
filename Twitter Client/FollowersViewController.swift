@@ -45,7 +45,10 @@ class FollowersViewController: UIViewController {
     func constructStateCtrl(client: TWTRAPIClient) {
         stateCtrl = FollowersStateController(client: client)
         
+        ActivityIndicator.show()
+        
         stateCtrl.getFollowersList(completion: { error in
+            ActivityIndicator.hide()
             if error != nil {
                 return
             }

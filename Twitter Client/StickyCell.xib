@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="330" height="166"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rVj-MJ-0vk">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_profile" translatesAutoresizingMaskIntoConstraints="NO" id="rVj-MJ-0vk">
                         <rect key="frame" x="0.0" y="0.0" width="330" height="166"/>
                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
@@ -31,14 +31,14 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mohamed Salah" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKL-PO-L3L">
                         <rect key="frame" x="8" y="107" width="314" height="26.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0L-up-6aW">
                         <rect key="frame" x="8" y="144" width="314" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -68,6 +68,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="bg_profile" width="400" height="300"/>
         <image name="ic_profile_placeholder" width="300" height="284"/>
     </resources>
 </document>

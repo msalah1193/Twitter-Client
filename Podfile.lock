@@ -1,5 +1,6 @@
 PODS:
   - CSStickyHeaderFlowLayout (0.2.11)
+  - ImageViewer (4.1.0)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -10,17 +11,19 @@ PODS:
 
 DEPENDENCIES:
   - CSStickyHeaderFlowLayout
+  - ImageViewer
   - SDWebImage (~> 4.0)
   - SwiftyJSON
   - TwitterKit
 
 SPEC CHECKSUMS:
   CSStickyHeaderFlowLayout: e9bcb1762413f49d7d09e5bd0ae5efd1100116b7
+  ImageViewer: 163e5832e0a09e31a3e3482cce6e5e9029356174
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
   TwitterKit: 202404be71aadd81d19f677b34579fe77d9cb67e
 
-PODFILE CHECKSUM: c9abc5ec5817bb0f154df245dfd5c7979985dcd6
+PODFILE CHECKSUM: deae72cdc46ee8ee3cb8641ef2d56d17953e68cd
 
 COCOAPODS: 1.2.1

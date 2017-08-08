@@ -10,4 +10,6 @@ target 'Twitter Client' do
   pod 'SwiftyJSON'
   pod 'SDWebImage', '~> 4.0'
   pod "CSStickyHeaderFlowLayout"
+  pod 'ImageViewer'
+
 end

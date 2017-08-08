@@ -9,6 +9,7 @@
 import UIKit
 import TwitterKit
 import CSStickyHeaderFlowLayout
+import ImageViewer
 
 class ProfileViewController: UIViewController {
     //MARK:- IBOutlets
@@ -17,6 +18,7 @@ class ProfileViewController: UIViewController {
     //MARK:- Variables
     var collectionDataSource: CollectionDataSource<TweetCollectionCell, Tweet>!
     var stateCtrl: ProfileStateController!
+    var previewedImage: UIImage!
     
     //MARK:- Segues
     
@@ -27,7 +29,10 @@ class ProfileViewController: UIViewController {
         
         configFlowLayout()
         
+        ActivityIndicator.show()
         stateCtrl.getTweets { (error) in
+            
+            ActivityIndicator.hide()
             if error != nil {
                 return
             }
@@ -68,12 +73,18 @@ class ProfileViewController: UIViewController {
             cell.imageViewProfile.sd_setImage(with: user?.profileImage)
             cell.labelTweetText.text = tweet.text
         }
+        
         let configureHeader = { (cell: StickyHeaderCell) in
             let user = self.stateCtrl.profileUser
             cell.labelName.text = user?.name
             cell.labelUsername.text = "@\(user?.screenName ?? "")"
-            cell.imageViewProfile.sd_setImage(with: user?.profileImage)
-            cell.imageViewBackground.sd_setImage(with: user?.profileBackgroundImage)
+            cell.imageViewProfile.sd_setImage(with: user?.profileImage, placeholderImage: #imageLiteral(resourceName: "ic_profile_placeholder"))
+            
+            cell.imageViewBackground.sd_setImage(with: user?.profileBackgroundImage, placeholderImage: #imageLiteral(resourceName: "bg_profile"))
+            
+            //code for add gestures 
+            cell.delegate = self
+            cell.setupTapGestures()
         }
         
         collectionDataSource = CollectionDataSource(cellID: "tweetCell", data: stateCtrl.tweets, configureCell: configureCell, configureHeader: configureHeader)
@@ -84,4 +95,37 @@ class ProfileViewController: UIViewController {
     
     //MARK:- IBActions
 
+}
+
+//MARK:- Image Previewing Section
+extension ProfileViewController: StickyHeaderCellDelegate, GalleryItemsDataSource {
+    func didTapImage(image: UIImage) {
+        self.previewedImage = image
+        let galleryViewController = GalleryViewController(startIndex: 0, itemsDataSource: self,
+                                                          configuration: galleryConfiguration())
+        
+        self.presentImageGallery(galleryViewController)
+    }
+    
+    /**
+        construct configurations array
+     **/
+    func galleryConfiguration() -> GalleryConfiguration {
+        return [
+            
+            GalleryConfigurationItem.closeButtonMode(.none),
+            GalleryConfigurationItem.deleteButtonMode(.none),
+            GalleryConfigurationItem.thumbnailsButtonMode(.none)
+        ]
+    }
+    
+    //MARK:- Gallery Delegate Section
+    func itemCount() -> Int {
+        return 1
+    }
+    
+    func provideGalleryItem(_ index: Int) -> GalleryItem {
+        return GalleryItem.image { $0(self.previewedImage) }
+    }
+    
 }
