@@ -28,10 +28,7 @@ class AccountsManager {
         Takes username and search for it on Settings
      **/
     static func isAccountExist(with username: String)-> Bool {
-        let accountStore = ACAccountStore()
-        let accountType = accountStore.accountType(withAccountTypeIdentifier: ACAccountTypeIdentifierTwitter)
-        
-        let accounts = accountStore.accounts(with: accountType) as! [ACAccount]
+        let accounts = AccountsManager.getTwitterAccounts()
         
         for account in accounts {
             if account.username != nil
@@ -43,4 +40,17 @@ class AccountsManager {
         
         return false
     }
+    
+    /**
+        Gets All Twitter Accounts
+     **/
+    static func getTwitterAccounts ()-> [ACAccount] {
+        let accountStore = ACAccountStore()
+        let accountType = accountStore.accountType(withAccountTypeIdentifier: ACAccountTypeIdentifierTwitter)
+        
+        let accounts = accountStore.accounts(with: accountType) as! [ACAccount]
+        
+        return accounts
+    }
+    
 }

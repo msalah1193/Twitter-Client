@@ -49,11 +49,12 @@ class FollowersStateController{
     //MARK:- API CALLS
     func getFollowersList(completion: @escaping (_ error: String?)->()) {
         let followersGetEndpoint = "https://api.twitter.com/1.1/followers/list.json"
+        let params = ["count": "100"]
         var clientError : NSError?
         
         let request = client.urlRequest(withMethod: "GET",
                                         url: followersGetEndpoint,
-                                        parameters: nil,
+                                        parameters: params,
                                         error: &clientError)
         
         client.sendTwitterRequest(request) { (response, dataFromNetworking, connectionError) -> Void in

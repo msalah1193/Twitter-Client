@@ -41,6 +41,25 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    /**
+        handles device rotation to update collection view layout
+        using new CGSize
+     **/
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        let layout = collectionView.collectionViewLayout as! CSStickyHeaderFlowLayout
+        if (layout.isKind(of: CSStickyHeaderFlowLayout.self)) {
+            layout.parallaxHeaderReferenceSize = CGSize(width: size.width,
+                                                        height: 200)
+            
+            layout.itemSize = CGSize(width: size.width - 16,
+                                     height: 106)
+        }
+        
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     //MARK:- Configuratiuon
     func initStateCtrl (client: TWTRAPIClient, user: User) {
         stateCtrl = ProfileStateController(client: client,
