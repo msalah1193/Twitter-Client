@@ -32,10 +32,11 @@
 		C574C5931F362A560033B2B0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574C5921F362A560033B2B0 /* User.swift */; };
 		C574C5961F3635D70033B2B0 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574C5951F3635D70033B2B0 /* TableDataSource.swift */; };
 		C574C5981F3636730033B2B0 /* FollowerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574C5971F3636730033B2B0 /* FollowerTVC.swift */; };
-		C574C59B1F3639250033B2B0 /* FollowersTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574C59A1F3639250033B2B0 /* FollowersTableDelegate.swift */; };
+		C574C59B1F3639250033B2B0 /* FollowersDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C574C59A1F3639250033B2B0 /* FollowersDelegates.swift */; };
 		C5B534431F39DEE1006BF3C3 /* StickyHeaderCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B534421F39DEE1006BF3C3 /* StickyHeaderCellDelegate.swift */; };
 		C5B5344A1F39F0FD006BF3C3 /* ALLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B534491F39F0FD006BF3C3 /* ALLoadingView.swift */; };
 		C5B5344C1F39F277006BF3C3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5344B1F39F277006BF3C3 /* ActivityIndicator.swift */; };
+		C5B5344E1F39F935006BF3C3 /* FollowerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5344D1F39F935006BF3C3 /* FollowerCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,10 +69,11 @@
 		C574C5921F362A560033B2B0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C574C5951F3635D70033B2B0 /* TableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		C574C5971F3636730033B2B0 /* FollowerTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerTVC.swift; sourceTree = "<group>"; };
-		C574C59A1F3639250033B2B0 /* FollowersTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersTableDelegate.swift; sourceTree = "<group>"; };
+		C574C59A1F3639250033B2B0 /* FollowersDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersDelegates.swift; sourceTree = "<group>"; };
 		C5B534421F39DEE1006BF3C3 /* StickyHeaderCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickyHeaderCellDelegate.swift; sourceTree = "<group>"; };
 		C5B534491F39F0FD006BF3C3 /* ALLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALLoadingView.swift; sourceTree = "<group>"; };
 		C5B5344B1F39F277006BF3C3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		C5B5344D1F39F935006BF3C3 /* FollowerCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,8 +272,9 @@
 			isa = PBXGroup;
 			children = (
 				C574C58C1F3611270033B2B0 /* FollowersViewController.swift */,
+				C5B5344D1F39F935006BF3C3 /* FollowerCVC.swift */,
 				C574C5971F3636730033B2B0 /* FollowerTVC.swift */,
-				C574C59A1F3639250033B2B0 /* FollowersTableDelegate.swift */,
+				C574C59A1F3639250033B2B0 /* FollowersDelegates.swift */,
 			);
 			name = Followers;
 			sourceTree = "<group>";
@@ -426,7 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C574C59B1F3639250033B2B0 /* FollowersTableDelegate.swift in Sources */,
+				C574C59B1F3639250033B2B0 /* FollowersDelegates.swift in Sources */,
 				C574C57B1F35E9C90033B2B0 /* AppKeys.swift in Sources */,
 				C5B534431F39DEE1006BF3C3 /* StickyHeaderCellDelegate.swift in Sources */,
 				C574C5931F362A560033B2B0 /* User.swift in Sources */,
@@ -436,6 +439,7 @@
 				C574C5881F3603620033B2B0 /* UserDefaultsManager.swift in Sources */,
 				C53C33251F38884400626B13 /* ListViewsDelegate.swift in Sources */,
 				C53C332E1F389FC700626B13 /* ProfileStateController.swift in Sources */,
+				C5B5344E1F39F935006BF3C3 /* FollowerCVC.swift in Sources */,
 				C574C5641F35DC3E0033B2B0 /* AppDelegate.swift in Sources */,
 				C574C58D1F3611270033B2B0 /* FollowersViewController.swift in Sources */,
 				C5B5344C1F39F277006BF3C3 /* ActivityIndicator.swift in Sources */,

@@ -87,7 +87,8 @@ class ProfileViewController: UIViewController {
             cell.setupTapGestures()
         }
         
-        collectionDataSource = CollectionDataSource(cellID: "tweetCell", data: stateCtrl.tweets, configureCell: configureCell, configureHeader: configureHeader)
+        collectionDataSource = CollectionDataSource(cellID: "tweetCell", data: stateCtrl.tweets, configureCell: configureCell)
+        collectionDataSource.configureHeader = configureHeader
         
         collectionView.dataSource = collectionDataSource
         collectionView.reloadData()

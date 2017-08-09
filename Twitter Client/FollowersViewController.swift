@@ -13,11 +13,15 @@ import TwitterKit
 class FollowersViewController: UIViewController {
     //MARK:- IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK:- Variables
     var stateCtrl: FollowersStateController!
-    var dataSource: TableDataSource<FollowerTVC, User>!
+    var tableDataSource: TableDataSource<FollowerTVC, User>!
+    var collectionDataSource: CollectionDataSource<FollowerCVC, User>!
+    
     var tableDelegate: FollowersTableDelegate!
+    var collectionDelegate: CollectionViewDelegate!
     
     //MARK:- Segues
     let PROFILE_SEGUE = "fromFollowersToProfile"
@@ -27,7 +31,6 @@ class FollowersViewController: UIViewController {
         super.viewDidLoad()
         
         // Get the current userID. This value should be managed by the developer but can be retrieved from the TWTRSessionStore.
-        
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             let client = TWTRAPIClient(userID: userID)
             self.constructStateCtrl(client: client)
@@ -39,6 +42,14 @@ class FollowersViewController: UIViewController {
                 self.constructStateCtrl(client: client)
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(FollowersViewController.checkOrientation), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
+        checkOrientation()
     }
     
     //MARK:- Configuratiuon
@@ -53,23 +64,21 @@ class FollowersViewController: UIViewController {
                 return
             }
             self.setupTable()
+            self.setupCollection()
         })
     }
     
-    func setupTable() {
-        tableDelegate = FollowersTableDelegate(listDelegate: self)
+    func checkOrientation() {
+        let orientation = UIApplication.shared.statusBarOrientation
         
-        dataSource = TableDataSource (cellID: FollowerTVC.CELL_ID, data: stateCtrl.users) { (cell, user) in
+        if (orientation == .portrait || orientation == .portraitUpsideDown) {
+            tableView.alpha = 1
+            collectionView.alpha = 0
             
-            cell.imageViewProfilePic.sd_setImage(with: user.profileImage)
-            cell.labelName.text = user.name
-            cell.labelUsername.text = "@\(user.screenName!)"
-            cell.labelBio.text = user.descriptionField
+        } else {
+            tableView.alpha = 0
+            collectionView.alpha = 1
         }
-        
-        tableView.delegate = tableDelegate
-        tableView.dataSource = dataSource
-        tableView.reloadData()
     }
     
     //MARK:- Navigation
@@ -91,3 +100,42 @@ extension FollowersViewController: ListViewsDelegate {
                           sender: stateCtrl.users[index])
     }
 }
+
+//MARK:- Lists Config
+extension FollowersViewController {
+    func setupTable() {
+        tableDelegate = FollowersTableDelegate(listDelegate: self)
+        
+        tableDataSource = TableDataSource (cellID: FollowerTVC.CELL_ID, data: stateCtrl.users) { (cell, user) in
+            
+            cell.imageViewProfilePic.sd_setImage(with: user.profileImage)
+            cell.labelName.text = user.name
+            cell.labelUsername.text = "@\(user.screenName!)"
+            cell.labelBio.text = user.descriptionField
+        }
+        
+        tableView.delegate = tableDelegate
+        tableView.dataSource = tableDataSource
+        tableView.reloadData()
+    }
+    
+    func setupCollection() {
+        let cellSize  = CGSize(width: FollowerCVC.cellWidth, height: 146)
+        collectionDelegate = CollectionViewDelegate(cellSize: cellSize, self)
+        
+        collectionDataSource = CollectionDataSource(cellID: FollowerCVC.CELL_ID, data: stateCtrl.users, configureCell: { (cell, user) in
+            
+            cell.imageViewProfilePic.sd_setImage(with: user.profileImage)
+            cell.labelName.text = user.name
+            cell.labelUsername.text = "@\(user.screenName!)"
+            cell.labelBio.text = user.descriptionField
+            
+        })
+        
+        collectionView.delegate = collectionDelegate
+        collectionView.dataSource = collectionDataSource
+        collectionView.reloadData()
+    }
+    
+}
+
