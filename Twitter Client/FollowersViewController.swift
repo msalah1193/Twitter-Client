@@ -15,6 +15,8 @@ class FollowersViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var barBtnLang: UIBarButtonItem!
+    
     //MARK:- Variables
     var stateCtrl: FollowersStateController!
     var tableDataSource: TableDataSource<FollowerTVC, User>!
@@ -61,8 +63,14 @@ class FollowersViewController: UIViewController {
         stateCtrl.getFollowersList(completion: { error in
             ActivityIndicator.hide()
             if error != nil {
+                _ = SweetAlert().showAlert(Locale.networkError.localized,
+                                           subTitle: error,
+                                           style: AlertStyle.error,
+                                           buttonTitle: Locale.ok.localized,
+                                           buttonColor: UIColor.twitterBlue)
                 return
             }
+            
             self.setupTable()
             self.setupCollection()
         })
@@ -79,6 +87,18 @@ class FollowersViewController: UIViewController {
             tableView.alpha = 0
             collectionView.alpha = 1
         }
+    }
+    
+    //MARK:- IBActions
+    @IBAction func barBtnLangClicked(_ sender: Any) {
+        var newLang: Languages = .en
+        
+        if LanguageController.currentLanguage() == Languages.en.rawValue {
+            newLang = .ar
+        }
+        
+        LanguageController.changeLanguage(language: newLang,
+                                          transition: .transitionFlipFromLeft)
     }
     
     //MARK:- Navigation

@@ -34,6 +34,11 @@ class ProfileViewController: UIViewController {
             
             ActivityIndicator.hide()
             if error != nil {
+                _ = SweetAlert().showAlert(Locale.networkError.localized,
+                                           subTitle: error,
+                                           style: AlertStyle.error,
+                                           buttonTitle: Locale.ok.localized,
+                                           buttonColor: UIColor.twitterBlue)
                 return
             }
             

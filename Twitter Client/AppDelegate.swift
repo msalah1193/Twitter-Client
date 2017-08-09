@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Twitter.sharedInstance()
             .start(withConsumerKey: AppKeys.twitterConsumerKey.rawValue, consumerSecret: AppKeys.twitterConsumerSecret.rawValue)
         
+        //Make Localizer do exchange methods with my custom ones
+        Localizer.exchangeNow()
         
         AccountsManager.requestAccessToSettings { (granted, error) in
             if granted {

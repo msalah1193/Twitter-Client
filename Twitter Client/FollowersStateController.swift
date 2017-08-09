@@ -73,7 +73,7 @@ class FollowersStateController{
             
             var errorMessage: String!
             if !self.cacheFollowersResponse(dataFromNetworking!) {
-                errorMessage = "Error in Data Caching"
+                errorMessage = Locale.cacheError.localized
             }
             
             self.setDataValues(dataFromNetworking!)

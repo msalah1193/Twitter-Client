@@ -60,16 +60,16 @@ extension LoginViewController {
     }
     
     func handle(error: Error?) {
-        var errorMessage = "UnKnown Error"
+        var errorMessage = Locale.unknowError.localized
         
         if let wrappedError = error {
             errorMessage = wrappedError.localizedDescription
         }
         
-        _ = SweetAlert().showAlert("Login Failed",
+        _ = SweetAlert().showAlert(Locale.loginFail.localized,
                                    subTitle: errorMessage,
                                    style: AlertStyle.error,
-                                   buttonTitle: "OK",
+                                   buttonTitle: Locale.ok.localized,
                                    buttonColor: UIColor.twitterBlue)
     }
 }

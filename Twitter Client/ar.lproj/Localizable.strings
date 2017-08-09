@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Twitter Client
+
+  Created by Mohamed Salah on 8/9/17.
+  Copyright © 2017 Mohamed Salah. All rights reserved.
+*/
+
+"CacheError" = "خطأ بالتخزين المؤقت";
+
+"NoTweets" = "لا يوجد تويتات";
+
+"UnknowError" = "حدث خطأ";
+
+"LoginFail" = "تسجيل الدخول لم ينجح";
+
+"OK" = "تمام";
+
+"networkError" = "خطأ بالشبكة";
