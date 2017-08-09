@@ -12,19 +12,20 @@ import CSStickyHeaderFlowLayout
 class CollectionDataSource<CellType: UICollectionViewCell, Model>: NSObject, UICollectionViewDataSource {
     
     //MARK:- Variables
-    var cellIdentifier = ""
-    var configureCell: (CellType, Model)->()!
-    var configureHeader: (StickyHeaderCell)->()!
-    var data: [Model]!
+    private var cellIdentifier = ""
+    private var configureCell: (CellType, Model)->()!
+    private var data: [Model]!
     
-    required init(cellID: String, data: [Model], configureCell: @escaping (CellType, Model)->(), configureHeader: @escaping (StickyHeaderCell)->()) {
+    var configureHeader: ((StickyHeaderCell)->())? = nil
+    
+    required init(cellID: String, data: [Model], configureCell: @escaping (CellType, Model)->()) {
         self.cellIdentifier = cellID
         self.data = data
         self.configureCell = configureCell
-        self.configureHeader = configureHeader
     }
     
-    //MAKR:- Data Source Methods
+    
+    //MARK:- Data Source Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -43,9 +44,15 @@ class CollectionDataSource<CellType: UICollectionViewCell, Model>: NSObject, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard let configHeader = configureHeader else {
+            return UICollectionViewCell()
+        }
+        
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: CSStickyHeaderParallaxHeader, withReuseIdentifier: "StickyCell", for: indexPath) as! StickyHeaderCell
         
-        configureHeader(cell)
+        configHeader(cell)
         return cell
     }
+    
 }
