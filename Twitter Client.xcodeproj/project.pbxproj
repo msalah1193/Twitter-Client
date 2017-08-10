@@ -323,10 +323,8 @@
 		C5B534531F3B21C6006BF3C3 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				C5B534671F3C6863006BF3C3 /* Helper Classes */,
 				C5B534541F3B21DE006BF3C3 /* Strings */,
-				C5B534591F3B2252006BF3C3 /* LanguageController.swift */,
-				C5B5345A1F3B2252006BF3C3 /* Languages.swift */,
-				C5B5345B1F3B2252006BF3C3 /* Localizer.swift */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -337,6 +335,16 @@
 				C5B534571F3B21EE006BF3C3 /* Localizable.strings */,
 			);
 			name = Strings;
+			sourceTree = "<group>";
+		};
+		C5B534671F3C6863006BF3C3 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C5B534591F3B2252006BF3C3 /* LanguageController.swift */,
+				C5B5345A1F3B2252006BF3C3 /* Languages.swift */,
+				C5B5345B1F3B2252006BF3C3 /* Localizer.swift */,
+			);
+			name = "Helper Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
