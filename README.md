@@ -3,9 +3,16 @@
 A Simple iOS Twitter Client 
 
 - Login with twitter 
+- Save Account on Device Settings
+- Handle Login For One Time Only
 - Followers list with autoresized cells 
+- Offline caching for followers list
+- Grid view for landscape orientation
 - Follower profile with the latest 10 tweets
+- Sticky header for profile user info. 
+- Clickable profile and background images 
 - Localization (Arabic/English)
+
 
 Home .                     |  Profile
 :-------------------------:|:-------------------------:
